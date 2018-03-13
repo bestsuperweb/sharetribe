@@ -212,7 +212,6 @@ lv:
         update_settings: ~
         automatically_confirmed_no_escrow: ~
         automatically_confirmed_no_escrow_stripe_info: ~
-        automatically_confirmed_after_end_time: ~
         automatic_newsletter_frequency: ~
         newsletter_daily: ~
         newsletter_weekly: ~
@@ -297,6 +296,7 @@ lv:
         invalid_post_listing_button_label: ~
       transactions:
         export_all_as_csv: ~
+        processing_export: ~
         transactions: ~
         headers:
           conversation: ~
@@ -676,7 +676,6 @@ lv:
     removed_user: ~
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -684,10 +683,6 @@ lv:
       title: ~
       body_text: ~
       body_text_accept: ~
-      link_to_paypal_text: ~
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
       link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
@@ -764,6 +759,9 @@ lv:
       canceled_offer: ~
       paid: "apmaksāts %{sum}"
       payment_preauthorized: ~
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Vēstule
       message_to: ~
@@ -836,6 +834,8 @@ lv:
           intl: ~
           unknown_reason: ~
           verify: ~
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Apstiprināt piedāvājumu"
       accept_request: "Apstiprināt pieprasījumu"
@@ -905,6 +905,8 @@ lv:
       has_marked_request_as_canceled: ~
       giving_feedback_is_good_idea: ~
       give_feedback_to: "Novērtēt %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: ~
       we_have_marked_request_as_confirmed: ~
@@ -929,10 +931,10 @@ lv:
       message_not_displaying_correctly: ~
       view_it_in_your_browser: "Apskatīt savā interneta pārlūkā."
       or: vai
-      unsubscribe_from_these_emails_info: ~
+      unsubscribe_from_these_emails_info: "Jūs saņemat šo e-pastu jo jūs esat %{service_name} dalībnieks"
       unsubscribe_from_these_emails: ~
-      unsubscribe_from_invitation_emails_info: ~
-      unsubscribe_from_invitation_emails: ~
+      unsubscribe_from_invitation_emails_info: "Jūs saņemat šo e-pastu jo %{service_name} dalībnieks uzaicināja jūs pievienoties"
+      unsubscribe_from_invitation_emails: "Atrakstīties no uzaicinājuma e-pastiem lai pievienoties %{service_name}"
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} ir apstiprinājums jūsu piedāvājumu %{listing}"
       has_accepted_your_request: "%{accepter} ir apstiprinājis jūsu pieprasījumu%{listing}"
@@ -979,6 +981,8 @@ lv:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1016,6 +1020,8 @@ lv:
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} ir iesniedzis jums atsauksmi %{service_name}"
       you_can_give_feedback_to: "Jūs vēl neesat novertējis lietotāju %{name}"
@@ -1400,10 +1406,10 @@ lv:
       feedback_sent_to: "Atsauksme pievienota personai %{target_person}"
       feedback_skipped: "Atsauksme izlaista"
       invitation_cannot_be_sent: "Ielūgumu nevar nosūtīt"
-      invitation_cannot_unsubscribe: ~
+      invitation_cannot_unsubscribe: "Nav iespēja atrakstīties no uzaicinājuma e-pastiem"
       invitation_limit_reached: ~
       invitation_sent: "Ielūgums veiksmīgi nosūtīts"
-      invitation_successfully_unsubscribed: ~
+      invitation_successfully_unsubscribed: "Veiksmīgi atrakstījāties no uzaicinājuma e-pastiem"
       inviting_new_users_is_not_allowed_in_this_community: ~
       login_again: ~
       login_failed: ~
@@ -1598,10 +1604,7 @@ lv:
         no_service_fee_you_will_get_paypal_text: ~
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: ~
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: ~
         delivery: ~
         shipping: ~
         shipping_price: ~
@@ -2238,6 +2241,8 @@ lv:
           saving_failed: ~
         working_hours:
           required: ~
+          overlaps: ~
+          covers: ~
       pricing_units:
         piece: ~
         hour: ~

@@ -206,13 +206,14 @@ module ListingAvailabilityManage
       listing: working_time_slots,
       time_slot_options: time_slot_options,
       day_names: day_names,
-      listing_just_created: !!params[:listing_just_created],
+      listing_just_created: !!params[:listing_just_created] || !listing.per_hour_ready,
       first_day_of_week: I18n.t('date.first_day_of_week')
     }
   end
 
   def booking_per_hour?
-    listing.listing_shape&.booking_per_hour?
+    listing.unit_type.to_s == ListingUnit::HOUR && listing.quantity_selector == 'number' &&
+      listing.availability == ListingShape::AVAILABILITY_BOOKING
   end
 
   def quantity_per_day_or_night?
@@ -222,7 +223,7 @@ module ListingAvailabilityManage
   private
 
   def working_time_slots
-    listing.working_hours_new_set if params[:listing_just_created]
+    listing.working_hours_new_set if params[:listing_just_created] || !listing.per_hour_ready
     listing.working_hours_as_json
   end
 

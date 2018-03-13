@@ -227,7 +227,6 @@ fi:
         update_settings: Tallenna
         automatically_confirmed_no_escrow: "Tilaus merkitään toteutuneeksi automaattisesti, kun maksusta on kulunut %{days_dropdown} päivää"
         automatically_confirmed_no_escrow_stripe_info: "Stripe-alustalla tehdyt maksut siirtyvät myyjälle vasta kun tilaus merkitään toteutuneeksi. %{learn_more}."
-        automatically_confirmed_after_end_time: "Tilaus merkitään toteutuneeksi joko ostajan toimesta tai %{days_dropdown} päivää päättymispäivän jälkeen."
         automatic_newsletter_frequency: "Lähetä automaattinen uutiskirje: %{frequency_dropdown}"
         newsletter_daily: Päivittäin
         newsletter_weekly: Viikoittain
@@ -249,7 +248,7 @@ fi:
         join_date: Liittynyt
         admin: Ylläpito
         posting_allowed: "Hyväksytty ilmoittaja"
-        ban_user: Poista
+        ban_user: Estä
         saving_user_status: Tallennetaan...
         save_user_status_successful: "Tallennus onnistui"
         export_all_as_csv: "Lataa tiedot CSV-tiedostona"
@@ -312,6 +311,7 @@ fi:
         invalid_post_listing_button_label: "Ole hyvä ja anna kelvollinen teksti \"Lisää uusi ilmoitus\" -napille"
       transactions:
         export_all_as_csv: "Lataa tiedot CSV-tiedostona"
+        processing_export: ~
         transactions: "Näytä tilaukset"
         headers:
           conversation: Viestiketju
@@ -450,7 +450,7 @@ fi:
         email_sent: "Viesti lähetetty."
         to_improve_email_deliverability: "Sähköpostin toimitettavuuden parantamiseksi viestin otsikko luodaan automaattisesti, eikä sitä voi muuttaa."
         email_subject_text: "Uusi viesti palvelun %{service_name} ylläpidolta"
-        firstname_cannot_be_removed: "Etunimeä ei voi poistaa, ja sen tilalla lähetetyissä viesteissä on vastaanottajan oikea etunimi"
+        firstname_cannot_be_removed: "Etunimeä ei voi poistaa, ja sen tilalla lähetetyissä viesteissä on vastaanottajan oikea etunimi."
         hello_firstname: "Hei Etunimi,"
         hello_firstname_text: "Hei %{person},"
     left_hand_navigation:
@@ -707,7 +707,6 @@ fi:
     removed_user: "Käyttäjä poistettu"
     payment_fee_info:
       title: Palvelumaksu
-      title_paypal: "PayPalin välityspalkkio"
       stripe: Stripe
       paypal: PayPal
       info: "%{service_name} käyttää maksunvälittäjänä joka Stripea tai PayPalia. Molemmat veloittavat palvelumaksun jokaisesta maksutapahtumasta."
@@ -720,12 +719,6 @@ fi:
           PayPal prosessoi tämän maksutapahtuman. PayPal veloittaa jokaisesta maksutapahtumasta prosessointikulun. Tämä kulu on noin 2% - 5%, riippuen kuinka paljon tililtä myydään kuukausittain ja siitä, mikä on myyjän asuinmaa. Yleisesti ottaen kotimaan sisällä tapahtuvista maksuista veloitetaan vähemmän kuin kansainvälisistä, ja suurempi myyntivoluumi alentaa veloitusprosenttia.
           Näet tarkat kulut kirjautumalla PayPal-tilillesi ja menemällä kohteeseen %{link_to_paypal}. Jokaisen oston jälkeen saat kuitin, jossa listataan maksukulut tarkasti.
       link_to_paypal_text: "tätä linkkiä"
-    paypal_only_fee_info:
-      title: "PayPalin palvelumaksu"
-      body_text: |-
-          %{service_name} käyttää PayPalia maksunvälittäjänään. PayPal veloittaa palvelumaksun jokaisesta sen kautta kulkevasta maksusta. Palvelumaksun suuruus on 2%-5% kokonaishinnasta, riippuen kuukausittaisesta myyntivolyymistasi sekä ostajan kotimaasta. Tyypillisesti kotimaiset ostot ovat halvempia kuin ulkomaiset, ja suuri myyntivolyymi tuo sinulle alennuksen palvelumaksusta. 
-          Voit nähdä tarkan hinnaston kirjautumalla PayPal-tilillesi ja menemällä %{link_to_paypal}.Jokaisen ostotapahtuman jälkeen saat sähköpostiisi kuitin, jossa näytetään tarkka palvelumaksu.
-      link_to_paypal_text: tänne
     stripe_fee_info:
       title: "Stripen palvelumaksu"
       body_text: "Stripe-maksuista %{service_name} veloittaa %{stripe_commission}%:n välityspalkkion. Stripen palvelumaksu sisältyy tähän välityspalkkioon."
@@ -801,6 +794,9 @@ fi:
       canceled_offer: "peruutti tarjouksen"
       paid: "maksoi %{sum}"
       payment_preauthorized: "Katevaraus tehty: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Viesti
       message_to: "Viesti käyttäjälle %{author_name}"
@@ -873,6 +869,8 @@ fi:
           intl: "Odottaa että hyväksyt PayPal-maksun"
           unknown_reason: "Maksu odottaa. Voit kirjautua Paypal-tilillesi nähdäksesi lisätietoja."
           verify: "Odottaa että vahvistat PayPal-tilisi"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Hyväksy tarjous"
       accept_request: "Hyväksy pyyntö"
@@ -942,6 +940,8 @@ fi:
       has_marked_request_as_canceled: "%{other_party_full_name} on ilmoittanut, että pyyntö '%{request}' ei toteutunut. Voit silti antaa hänelle palautetta."
       giving_feedback_is_good_idea: "Palautteen antaminen kannattaa aina. Jos kaikki meni hyvin, voit palautteen avulla kertoa muille jäsenille, että %{other_party_given_name} on luotettava. Jos vastaan tuli ongelmia, niistä kannattaa myös mainita."
       give_feedback_to: "Anna palautetta käyttäjälle %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "Pyyntösi on automaattisesti merkitty toteutuneeksi - muistathan antaa palautetta"
       we_have_marked_request_as_confirmed: "Olemme merkinneet pyynnön '%{request}' toteutuneeksi. Merkitsimme pyynnön toteutuneeksi automaattisesti, koska pyynnön hyväksymisestä on kulunut %{days_passed} päivää."
@@ -1016,6 +1016,8 @@ fi:
       price_per_unit_type: "Hinta per %{unit_type}"
       quantity: "Määrä:"
       you_have_received_new_payment: "Käyttäjä %{payer_full_name} on maksanut sinulle <b>%{payment_sum}</b> ilmoituksesta <b>%{listing_title}</b>. Tässä kuittisi."
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: "Kuitti maksusta"
       you_have_made_new_payment: "Olet maksanut käyttäjälle %{recipient_full_name} <b>%{payment_sum}</b> ilmoituksesta <b>%{listing_title}</b>. Tässä kuitti maksusta."
@@ -1053,6 +1055,8 @@ fi:
       paypal_gateway_fee: "PayPalin palvelumaksu"
       money_will_be_transferred: "Rahat siirretään käyttäjälle %{recipient_name} kun a) olet merkinnyt tilauksen toteutuneeksi tai b) maksuhetkestä on kulunut %{automatic_confirmation_days} päivää."
       listing_per_unit_title: "%{title}, per %{unit_type}"
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} on antanut sinulle palautetta %{service_name}-palvelussa"
       you_can_give_feedback_to: "Et ole vielä antanut palautetta käyttäjälle %{name}."
@@ -1639,10 +1643,7 @@ fi:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} vähennetään hinnasta."
         no_service_fee_you_will_get_payment_text: "Hinnasta vähennetään %{payment_fee_info_link}."
         after_service_fee_you_will_get_payment_text: "Kun joku tekee uuden tilauksen, %{service_name}-palvelun välityspalkkio (%{sum_with_currency}) sekä %{payment_fee_info_link} vähennetään hinnasta."
-        after_service_fee_you_will_get_paypal_text: "Kun joku tekee tilauksen, %{service_name}-palvelun palvelumaksu (%{sum_with_currency}) sekä %{paypal_fee_info_link} vähennetään hinnasta."
-        after_service_fee_you_will_get_stripe_text: "Kun joku tekee uuden tilauksen, %{service_name}-palvelun välityspalkkio (%{sum_with_currency}) vähennetään hinnasta."
         payment_fee_info_link_text: "maksunvälittäjän palvelumaksu"
-        paypal_fee_info_link_text: "PayPalin käsittelymaksu"
         delivery: Kuljetustapa
         shipping: Postitus
         shipping_price: "Postituksen hinta"
@@ -2306,6 +2307,8 @@ fi:
           saving_failed: "Saatavuustietojen muutoksia ei voitu tallentaa. Ole hyvä ja kokeile päivittää sivu."
         working_hours:
           required: tarvitaan
+          overlaps: "peittää osittain"
+          covers: peittää
       pricing_units:
         piece: kappale
         hour: tunti
@@ -2392,7 +2395,7 @@ fi:
           one: "Näytetään <b>%{accepted_count}</b> hyväksytty %{accepted_model} ja %{banned_count} estetty %{banned_model}"
           other: "Näytetään <b>%{accepted_count}</b> hyväksyttyä %{accepted_model} ja %{banned_count} estettyä %{banned_model}"
         multi_page: "Näytetään %{model} %{from} - %{to} yhteensä %{accepted_count} hyväksytystä %{accepted_model} ja %{banned_count} estetystä %{banned_model}"
-        multi_page_html: "Näytetään %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> yhteensä <b>%{accepted_count}</b> hyväksytystä %{accepted_model} ja %{banned_count} estetystä %{banned_model}"
+        multi_page_html: "Näytetään <b>%{from}&nbsp;-&nbsp;%{to}</b> käyttäjää yhteensä <b>%{accepted_count}</b> hyväksytystä ja %{banned_count} estetystä käyttäjästä"
   stripe_accounts:
     admin_account_not_connected: "%{service_name}-palvelun maksujärjestelmän käyttäminen maksujen vastaanottamiseen ei ole vielä mahdollista, koska maksujärjestelmää ei ole vielä otettu käyttöön. Ole hyvä ja %{contact_admin_link}."
     contact_admin_link_text: "ota yhteyttä palvelun %{service_name} ylläpitoon"

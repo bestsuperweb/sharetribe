@@ -208,7 +208,7 @@ Then(/^I should see working hours save button finished$/) do
 end
 
 Given(/^that listing availability is booking$/) do
-  @listing.update_attribute(:availability, :booking)
+  @listing.update_attributes(availability: :booking, quantity_selector: 'number')
 end
 
 Given(/^that listing has default working hours$/) do
@@ -223,3 +223,12 @@ Given(/^that listing have booking at "(.*?)" from "(.*?)" till "(.*?)"$/) do |da
   transaction = FactoryGirl.create(:transaction, community: community, listing: @listing, current_state: 'paid')
   FactoryGirl.create(:booking, tx: transaction, start_time: start_time, end_time: end_time, per_hour: true)
 end
+
+Then(/^(?:|I )should not see payment logos$/) do
+  expect(page).not_to have_css('.submit-payment-form-link')
+end
+
+Then(/^(?:|I )should see payment logos$/) do
+  expect(page).to have_css('.submit-payment-form-link')
+end
+

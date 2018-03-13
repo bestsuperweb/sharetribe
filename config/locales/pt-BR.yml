@@ -3,7 +3,7 @@ pt-BR:
     currency:
       format:
         separator: ","
-        delimiter: " "
+        delimiter: "."
         format: "%u%n"
   admin:
     categories:
@@ -227,7 +227,6 @@ pt-BR:
         update_settings: "Salvar configurações"
         automatically_confirmed_no_escrow: "A operação será automaticamente marcada como concluída %{days_dropdown} dias após o pagamento ter sido confirmado"
         automatically_confirmed_no_escrow_stripe_info: ~
-        automatically_confirmed_after_end_time: ~
         automatic_newsletter_frequency: "Enviar boletim automático: %{frequency_dropdown}"
         newsletter_daily: Diaramente
         newsletter_weekly: Semanal
@@ -312,6 +311,7 @@ pt-BR:
         invalid_post_listing_button_label: "Forneça um texto válido para o botão \"Publicar um novo anúncio\""
       transactions:
         export_all_as_csv: "Exporte tudo como CSV"
+        processing_export: ~
         transactions: "Ver transações"
         headers:
           conversation: "Criou a conversa"
@@ -449,10 +449,10 @@ pt-BR:
         message_will_be_sent_only_to_people_with_this_language: "Nota: o e-mail será enviado apenas aos usuários que utilizam a %{service_name} no idioma que você escolheu."
         email_sent: "E-mail enviado."
         to_improve_email_deliverability: ~
-        email_subject_text: ~
+        email_subject_text: "Nova mensagem da Equipe %{service_name}"
         firstname_cannot_be_removed: ~
-        hello_firstname: ~
-        hello_firstname_text: ~
+        hello_firstname: "Oi Firstname,"
+        hello_firstname_text: "Oi %{person},"
     left_hand_navigation:
       general: Geral
       users_and_transactions: "Usuários & transações"
@@ -702,8 +702,7 @@ pt-BR:
     what_is_this: "O que é isso?"
     removed_user: "Usuário removido"
     payment_fee_info:
-      title: ~
-      title_paypal: ~
+      title: "Taxa de processamento do pagamento"
       stripe: ~
       paypal: ~
       info: ~
@@ -714,12 +713,8 @@ pt-BR:
           Você pode ver as taxas exatas fazendo login em sua conta do PayPal e indo para %{link_to_paypal}. Após cada compra você receberá um recibo exibindo a taxa exata.
       body_text_accept: ~
       link_to_paypal_text: aqui
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
-      title: ~
+      title: "Taxa de processamento do pagamento do Stripe"
       body_text: ~
       link_to_stripe_text: ~
   conversations:
@@ -747,7 +742,7 @@ pt-BR:
       paypal_fee_info: "* Exclui <a id='%{fee_info_link_id}' href='#'> pagamento da taxa de processamento do PayPal</a>"
       payment_fee_info: ~
       shipping_price_label: "Envio:"
-      stripe-fee_label: ~
+      stripe-fee_label: "Taxa de processamento do pagamento"
     confirm:
       confirm_description: "Se o seu pedido foi aceito, você deve confirmá-lo como concluído. Então você pode dar um feedback para a outra parte."
       cancel_description: "Se o seu pedido não foi efetuado, você pode marcá-lo como \"não efetuado\". Você ainda pode dar um feedback para a outra parte e descrever o que aconteceu."
@@ -793,6 +788,9 @@ pt-BR:
       canceled_offer: "cancelou a oferta"
       paid: "pago %{sum}"
       payment_preauthorized: "Pagamento autorizado: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Mensagem
       message_to: "Mensagem para %{author_name}"
@@ -865,6 +863,8 @@ pt-BR:
           intl: "Aguardando você aceitar o pagamento PayPal"
           unknown_reason: "O pagamento está pendente. Conecte-se na sua conta PayPal para ver mais detalhes."
           verify: "Aguardando você verificar sua conta PayPal"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Aceitar oferta"
       accept_request: "Aceitar solicitação"
@@ -934,6 +934,8 @@ pt-BR:
       has_marked_request_as_canceled: "%{other_party_full_name} cancelou o pedido '%{request}'. Você ainda pode dar um feedback para %{other_party_given_name}."
       giving_feedback_is_good_idea: "Dar feedback é sempre uma boa ideia. Se tudo correu bem, você deve deixar que os outros saibam que %{other_party_given_name} pode ser confiável. Se houve algum problema, é bom mencioná-lo também."
       give_feedback_to: "Dar uma opinião sobre %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "Pedido concluído automaticamente - lembre-se de dar feedback"
       we_have_marked_request_as_confirmed: "Marcamos o pedido '%{request}' concluído. O pedido foi concluído automaticamente porque %{days_passed} dias se passaram desde que foi aceito."
@@ -958,9 +960,9 @@ pt-BR:
       message_not_displaying_correctly: "Este e-mail não está sendo exibido corretamente?"
       view_it_in_your_browser: "Visualizar no seu navegador."
       or: ou
-      unsubscribe_from_these_emails_info: ~
+      unsubscribe_from_these_emails_info: "Você recebeu um novo pagamento este e-mail por ser membro do %{service_name}"
       unsubscribe_from_these_emails: "cancelar o recebimento desses e-mails"
-      unsubscribe_from_invitation_emails_info: ~
+      unsubscribe_from_invitation_emails_info: "Você recebeu um novo pagamento este e-mail por que um membro do %{service_name} convidou você."
       unsubscribe_from_invitation_emails: ~
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} aceitou sua oferta %{listing}"
@@ -998,27 +1000,29 @@ pt-BR:
       you_have_received_new_payment: "Você recebeu <b>%{payment_sum}</b> por <b>%{listing_title}</b> de %{payer_full_name}. Veja o recibo."
       listing_per_unit_title: ~
     payment_receipt_to_seller:
-      payment_gateway_fee: ~
+      payment_gateway_fee: "Taxa de processamento do pagamento:"
       shipping_total: ~
-      product: ~
-      price_payer_paid: ~
-      service_fee: ~
+      product: "Produto:"
+      price_payer_paid: "Preço pago por %{payer_full_name} :"
+      service_fee: "Taxa de serviço de %{service_name}:"
       you_will_get: ~
-      new_payment: ~
+      new_payment: "Você recebeu um novo pagamento"
       price_per_unit_type: ~
       quantity: ~
-      you_have_received_new_payment: ~
+      you_have_received_new_payment: "Você recebeu <b>%{payment_sum}</b> por <b>%{listing_title}</b> de %{payer_full_name}. Veja o recibo."
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
-      product: ~
+      product: Produto
       price_per_unit_type: ~
       duration: ~
       quantity: ~
       subtotal: ~
       total: ~
-      price: ~
-      service_fee: ~
+      price: Preço
+      service_fee: "Taxa de serviço"
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
@@ -1045,6 +1049,8 @@ pt-BR:
       paypal_gateway_fee: ~
       money_will_be_transferred: "O dinheiro será transferido para %{recipient_name} quando a) você tenha marcado o pedido como concluído ou b) %{automatic_confirmation_days} dias se passaram desde que você pagou."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} te avaliou %{service_name}"
       you_can_give_feedback_to: "Você ainda não avaliou %{name}"
@@ -1078,8 +1084,8 @@ pt-BR:
     transaction_preauthorized:
       subject: "%{requester} solicitou e autorizou o pagamento de %{listing_title}"
       transaction_requested_by_user: "%{requester} solicitou e pagou por \"%{listing_title}\""
-      you_have_time_to_accept: "Você precisa aceitar ou rejeitar o pedido no prazo de %{payment_expires_in}. Se você aceita vender, dentro deste prazo, o pagamento vai ser enviado para sua conta. Se você não aceitar, o pedido será rejeitado automaticamente e você não vai ser pago."
-      if_you_do_accept: "Se você aceitar o pedido, dentro deste prazo, o pagamento vserá enviado para sua conta."
+      you_have_time_to_accept: "Você precisa aceitar ou rejeitar o pedido no prazo de %{payment_expires_in}."
+      if_you_do_accept: "Se você aceitar o pedido, dentro deste prazo, o pagamento será enviado para sua conta."
       if_you_do_accept_stripe: ~
       if_you_do_not_accept: "Se você rejeitar o pedido ou não o aceitar nesse prazo, a transação será automaticamente cancelada, %{requester} não será cobrado e você não receberá o pagamento."
       click_here_to_reply: "Clique aqui para responder ao pedido"
@@ -1497,7 +1503,7 @@ pt-BR:
       you_have_already_given_feedback_about_this_event: "Você já deixou sua opinião sobre este evento"
       you_are_now_member: "Seja bem-vindo ao %{service_name}!"
       you_are_already_member: "Você já é membro da %{service_name}. Bem-vindo(a) de volta!"
-      you_must_log_in_to_create_new_listing: "Você deve conectar a sua conta para %{service_name} para criar um novo anúncio. Se você não tem uma conta, você pode %{sign_up_link}."
+      you_must_log_in_to_create_new_listing: "Você deve estar conectado à plataforma %{service_name} para poder criar um novo anúncio. Se você não tem uma conta, você pode %{sign_up_link}."
       additional_email_confirmed_dashboard: "Seu e-mail está confirmado."
       you_must_log_in_to_give_feedback: "Você deve conectar para escrever uma avaliação"
       you_must_log_in_to_invite_new_users: "Você deve se conectar para convidar novos usuários a %{service_name}"
@@ -1631,10 +1637,7 @@ pt-BR:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} irá deduzir do preço."
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "Desse valor será deduzida uma taxa de (%{sum_with_currency}) cobrada pelo %{service_name} e a %{paypal_fee_info_link}."
-        after_service_fee_you_will_get_stripe_text: ~
-        payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: "Taxa de processamento do pagamento do PayPal"
+        payment_fee_info_link_text: "taxa de processamento do pagamento"
         delivery: "Forma de entrega"
         shipping: Envio
         shipping_price: "Taxa de envio"
@@ -2294,6 +2297,8 @@ pt-BR:
           saving_failed: "Não é possível salvar as alterações de disponibilidade. Tente recarregar a página."
         working_hours:
           required: ~
+          overlaps: ~
+          covers: ~
       pricing_units:
         piece: fração
         hour: hora
